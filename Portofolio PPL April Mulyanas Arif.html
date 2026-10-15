@@ -1,0 +1,2631 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10263e">
+  <meta name="description" content="E-Portfolio 1 April Mulyanas Arif, mahasiswa PPG bidang Pendidikan Pancasila.">
+  <title>E-Portfolio 01 — April Mulyanas Arif</title>
+
+  <style>
+    /* ========================================
+       DESIGN SYSTEM
+    ======================================== */
+    :root {
+      --navy: #10263e;
+      --navy-2: #183752;
+      --navy-3: #284a65;
+      --gold: #c9a36b;
+      --gold-light: #f2e5d0;
+      --paper: #faf9f6;
+      --white: #fff;
+      --ink: #26394b;
+      --muted: #758294;
+      --line: #e8e6df;
+      --green: #567b67;
+      --sidebar: 278px;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Arial, sans-serif;
+      --shadow: 0 18px 55px rgba(16, 38, 62, .08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 30px;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    ::selection {
+      background: var(--gold-light);
+      color: var(--navy);
+    }
+
+    .serif {
+      font-family: var(--serif);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .container {
+      width: min(1160px, 100%);
+      padding-inline: 46px;
+      margin-inline: auto;
+    }
+
+    .section {
+      padding-block: 92px;
+      scroll-margin-top: 24px;
+    }
+
+    .section-kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #a17b46;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+    }
+
+    .section-kicker::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      margin-top: 13px;
+      color: var(--navy);
+      font: 500 clamp(2rem, 3.5vw, 3.1rem)/1.18 var(--serif);
+      letter-spacing: -1px;
+    }
+
+    .section-description {
+      max-width: 650px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.9;
+    }
+
+    .section-heading {
+      margin-bottom: 38px;
+    }
+
+    .eyebrow-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-tag::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #8baa92;
+    }
+
+    /* ========================================
+       SIDEBAR
+    ======================================== */
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      width: var(--sidebar);
+      padding: 27px 21px 20px;
+      overflow-y: auto;
+      background:
+        radial-gradient(ellipse at 10% 0%, rgba(201,163,107,.12), transparent 36%),
+        var(--navy);
+      color: white;
+      scrollbar-width: thin;
+      scrollbar-color: #526477 transparent;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 7px;
+      margin-bottom: 30px;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--gold);
+      color: var(--navy);
+      font: bold 1rem var(--serif);
+      letter-spacing: -1px;
+    }
+
+    .brand-name {
+      font-size: .79rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+    }
+
+    .brand-sub {
+      margin-top: 3px;
+      color: #a8b8c9;
+      font-size: .59rem;
+      letter-spacing: 1.4px;
+    }
+
+    .profile-card {
+      padding: 14px 0 25px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .avatar-ring {
+      width: 145px;
+      height: 145px;
+      padding: 5px;
+      margin: 0 auto 17px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 0 0 6px rgba(201,163,107,.05);
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 30%;
+      background: #e9e1d4;
+    }
+
+    .avatar-fallback {
+      display: none;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--gold-light);
+      color: var(--navy);
+      font: 2.5rem var(--serif);
+    }
+
+    .profile-name {
+      font: 500 1.18rem/1.4 var(--serif);
+    }
+
+    .profile-role {
+      margin-top: 6px;
+      color: #aebdcd;
+      font-size: .75rem;
+    }
+
+    .profile-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 14px;
+      padding: 6px 11px;
+      border: 1px solid rgba(201,163,107,.3);
+      border-radius: 30px;
+      color: #e9cb9b;
+      font-size: .65rem;
+    }
+
+    .profile-chip span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #83bd9a;
+    }
+
+    .nav-heading {
+      padding: 24px 11px 9px;
+      color: #8ea2b7;
+      font-size: .63rem;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+    }
+
+    .nav-list {
+      display: grid;
+      gap: 4px;
+    }
+
+    .nav-link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 43px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: #c1cdd9;
+      font-size: .79rem;
+      transition: background .2s, color .2s, transform .2s;
+    }
+
+    .nav-link:hover {
+      background: rgba(255,255,255,.07);
+      color: white;
+    }
+
+    .nav-link.active {
+      background: linear-gradient(105deg, #f0dfc1, #d0aa71);
+      color: #182e44;
+      font-weight: 800;
+    }
+
+    .nav-icon {
+      display: grid;
+      width: 23px;
+      place-items: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .nav-number {
+      margin-left: auto;
+      font-size: .64rem;
+      opacity: .65;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      padding: 28px 8px 3px;
+    }
+
+    .sidebar-quote {
+      padding-left: 13px;
+      border-left: 2px solid var(--gold);
+      color: #b9c5d2;
+      font: italic .85rem/1.8 var(--serif);
+    }
+
+    .sidebar-quote small {
+      display: block;
+      margin-top: 9px;
+      color: var(--gold);
+      font: 700 .59rem var(--sans);
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    /* ========================================
+       MOBILE NAVIGATION
+    ======================================== */
+    .mobile-header {
+      display: none;
+    }
+
+    .overlay {
+      display: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      margin-left: var(--sidebar);
+    }
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: var(--sidebar);
+      z-index: 1200;
+      width: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 610px;
+      align-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 88% 40%, rgba(201,163,107,.18), transparent 35%),
+        linear-gradient(135deg, #fffdf9 0%, #f4efe5 100%);
+      border-bottom: 1px solid #e9e2d5;
+    }
+
+    .hero::before {
+      content: "P";
+      position: absolute;
+      top: -150px;
+      right: 31%;
+      color: rgba(16,38,62,.027);
+      font: 650px/.9 var(--serif);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -150px;
+      bottom: -260px;
+      width: 480px;
+      height: 480px;
+      border: 1px solid rgba(201,163,107,.2);
+      border-radius: 50%;
+      box-shadow: 0 0 0 35px rgba(201,163,107,.025),
+                  0 0 0 70px rgba(201,163,107,.025);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      width: 100%;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 25px;
+      padding: 75px 46px;
+    }
+
+    .hero-index {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #a17b46;
+      font-size: .69rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero-index::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      margin-top: 25px;
+      color: var(--navy);
+      font: 500 clamp(3.2rem, 5.5vw, 5.3rem)/.99 var(--serif);
+      letter-spacing: -3px;
+    }
+
+    .hero h1 em {
+      color: #b38a50;
+      font-weight: 400;
+    }
+
+    .hero-title-small {
+      margin-top: 20px;
+      color: #465c71;
+      font: 1.15rem var(--serif);
+    }
+
+    .hero-rule {
+      width: 54px;
+      height: 4px;
+      margin: 24px 0;
+      border-radius: 4px;
+      background: var(--gold);
+    }
+
+    .hero-description {
+      max-width: 510px;
+      color: #6b7887;
+      font-size: .9rem;
+      line-height: 2;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: .79rem;
+      font-weight: 800;
+      transition: transform .2s, background .2s, box-shadow .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      background: var(--navy);
+      color: white;
+      box-shadow: 0 8px 22px rgba(16,38,62,.12);
+    }
+
+    .button-primary:hover {
+      background: var(--navy-2);
+    }
+
+    .button-outline {
+      border-color: #dcd4c7;
+      background: rgba(255,255,255,.55);
+      color: var(--navy);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: grid;
+      min-height: 410px;
+      place-items: center;
+    }
+
+    .hero-orbit {
+      position: absolute;
+      width: min(350px, 100%);
+      aspect-ratio: 1;
+      border: 1px solid rgba(177,135,75,.3);
+      border-radius: 50%;
+    }
+
+    .hero-orbit::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px dashed rgba(177,135,75,.35);
+      border-radius: 50%;
+    }
+
+    .hero-photo-frame {
+      position: relative;
+      z-index: 1;
+      width: min(285px, 80%);
+      height: 350px;
+      overflow: hidden;
+      border: 7px solid white;
+      border-radius: 150px 150px 23px 23px;
+      background: linear-gradient(145deg, #dce4e7, #e7d6bb);
+      box-shadow: 0 30px 75px rgba(16,38,62,.16);
+    }
+
+    .hero-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+    }
+
+    .hero-photo-fallback {
+      display: none;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: var(--navy);
+      text-align: center;
+      font: 1.5rem var(--serif);
+    }
+
+    .hero-stamp {
+      position: absolute;
+      z-index: 2;
+      top: 35px;
+      right: 0;
+      display: grid;
+      width: 78px;
+      height: 78px;
+      align-content: center;
+      justify-items: center;
+      border: 1px solid rgba(177,135,75,.5);
+      border-radius: 50%;
+      background: #fffaf1;
+      color: #a17b46;
+      transform: rotate(9deg);
+    }
+
+    .hero-stamp strong {
+      font: 1.5rem var(--serif);
+    }
+
+    .hero-stamp span {
+      font-size: .53rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .hero-note {
+      position: absolute;
+      z-index: 2;
+      right: -3px;
+      bottom: 14px;
+      padding: 14px 18px;
+      border: 1px solid rgba(16,38,62,.05);
+      border-radius: 13px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-note strong {
+      display: block;
+      color: var(--navy);
+      font: 1.2rem var(--serif);
+    }
+
+    .hero-note span {
+      color: var(--muted);
+      font-size: .67rem;
+    }
+
+    /* ========================================
+       IDENTITY STRIP
+    ======================================== */
+    .identity-strip {
+      background: white;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .identity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .identity-item {
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      gap: 13px;
+      padding: 25px 20px;
+      border-right: 1px solid var(--line);
+    }
+
+    .identity-item:first-child {
+      padding-left: 0;
+    }
+
+    .identity-item:last-child {
+      border-right: 0;
+    }
+
+    .identity-icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      place-items: center;
+      border-radius: 12px;
+      background: #f7f0e5;
+      color: #9e7845;
+      font-size: 1.05rem;
+    }
+
+    .identity-item small {
+      display: block;
+      color: var(--muted);
+      font-size: .67rem;
+    }
+
+    .identity-item strong {
+      display: block;
+      margin-top: 3px;
+      color: var(--navy);
+      font-size: .78rem;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    /* ========================================
+       ABOUT
+    ======================================== */
+    .about-section {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .about-visual {
+      position: relative;
+      padding: 24px 24px 0 0;
+    }
+
+    .about-panel {
+      min-height: 340px;
+      padding: 35px 28px;
+      border-radius: 3px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.07), transparent),
+        var(--navy);
+      color: white;
+      box-shadow: 15px 15px 0 #eee5d6;
+    }
+
+    .about-panel .large-initial {
+      color: var(--gold);
+      font: 5.8rem/.95 var(--serif);
+    }
+
+    .about-panel h3 {
+      margin-top: 25px;
+      font: 1.55rem/1.35 var(--serif);
+    }
+
+    .about-panel p {
+      margin-top: 12px;
+      color: #c0ccda;
+      font-size: .82rem;
+      line-height: 1.9;
+    }
+
+    .about-content .section-title {
+      font-size: clamp(2rem, 3vw, 2.65rem);
+    }
+
+    .about-content > p {
+      margin-top: 18px;
+      color: #6d7988;
+      font-size: .88rem;
+      line-height: 2;
+    }
+
+    .about-facts {
+      display: grid;
+      gap: 0;
+      margin-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .fact {
+      display: grid;
+      grid-template-columns: 135px 1fr;
+      gap: 15px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: .8rem;
+    }
+
+    .fact span {
+      color: var(--muted);
+    }
+
+    .fact strong {
+      color: var(--navy);
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    /* ========================================
+       PORTFOLIO DOCUMENTS
+    ======================================== */
+    .portfolio-section {
+      background: #f6f5f0;
+    }
+
+    .portfolio-heading-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .total-badge {
+      flex-shrink: 0;
+      padding: 9px 13px;
+      border: 1px solid #e5e1d8;
+      border-radius: 9px;
+      background: white;
+      color: var(--muted);
+      font-size: .73rem;
+    }
+
+    .total-badge strong {
+      color: var(--navy);
+    }
+
+    .document-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 19px;
+    }
+
+    .document-card {
+      --accent: #9c6945;
+      --tint: #f7ede3;
+      position: relative;
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 24px 21px 20px;
+      border: 1px solid #e9e6df;
+      border-radius: 15px;
+      background: white;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+
+    .document-card:nth-child(2) {
+      --accent: #4e7299;
+      --tint: #eaf1f8;
+    }
+
+    .document-card:nth-child(3) {
+      --accent: #3d8068;
+      --tint: #e7f3ed;
+    }
+
+    .document-card:nth-child(4) {
+      --accent: #7863a7;
+      --tint: #f0ecf8;
+    }
+
+    .document-card:nth-child(5) {
+      --accent: #a47b32;
+      --tint: #f8f0df;
+    }
+
+    .document-card:nth-child(6) {
+      --accent: #a65d77;
+      --tint: #f8eaf0;
+    }
+
+    .document-card::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s;
+    }
+
+    .document-card:hover {
+      transform: translateY(-5px);
+      border-color: #d7c9b2;
+      box-shadow: var(--shadow);
+    }
+
+    .document-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .doc-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .doc-icon {
+      display: grid;
+      width: 49px;
+      height: 49px;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--tint);
+      color: var(--accent);
+      font-size: 1.35rem;
+    }
+
+    .doc-number {
+      color: #d7dce0;
+      font: 1.5rem var(--serif);
+    }
+
+    .doc-category {
+      color: var(--accent);
+      font-size: .64rem;
+      font-weight: 900;
+      letter-spacing: 1.25px;
+      text-transform: uppercase;
+    }
+
+    .document-card h3 {
+      margin-top: 9px;
+      color: var(--navy);
+      font: 500 1.18rem/1.4 var(--serif);
+    }
+
+    .document-card > p {
+      margin-top: 12px;
+      color: #778292;
+      font-size: .79rem;
+      line-height: 1.85;
+    }
+
+    .doc-checklist {
+      display: grid;
+      gap: 9px;
+      margin: 19px 0 23px;
+      list-style: none;
+    }
+
+    .doc-checklist li {
+      display: flex;
+      gap: 8px;
+      align-items: start;
+      color: #59697b;
+      font-size: .74rem;
+      line-height: 1.65;
+    }
+
+    .doc-checklist li::before {
+      flex-shrink: 0;
+      color: var(--accent);
+      content: "✓";
+      font-weight: 900;
+    }
+
+    .doc-link {
+      display: flex;
+      min-height: 43px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: auto;
+      padding: 11px 12px;
+      border-radius: 9px;
+      background: var(--tint);
+      color: var(--accent);
+      font-size: .76rem;
+      font-weight: 800;
+      transition: filter .2s;
+    }
+
+    .doc-link:hover {
+      filter: saturate(1.3) brightness(.98);
+    }
+
+    .doc-link .arrow {
+      font-size: 1.05rem;
+      transition: transform .2s;
+    }
+
+    .doc-link:hover .arrow {
+      transform: translate(2px, -2px);
+    }
+
+    .document-note {
+      display: flex;
+      gap: 12px;
+      margin-top: 25px;
+      padding: 17px 19px;
+      border: 1px solid #e7dfd0;
+      border-radius: 11px;
+      background: #fffdf8;
+      color: #6d7885;
+      font-size: .78rem;
+    }
+
+    .document-note strong {
+      color: var(--navy);
+    }
+
+    /* ========================================
+       PROCESS
+    ======================================== */
+    .process-section {
+      background: white;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 35px;
+    }
+
+    .process-card {
+      padding: 22px 18px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fffefa;
+    }
+
+    .process-number {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--gold-light);
+      color: #936b37;
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .process-card h3 {
+      margin-top: 17px;
+      color: var(--navy);
+      font: 500 1.06rem var(--serif);
+    }
+
+    .process-card p {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: .76rem;
+      line-height: 1.85;
+    }
+
+    /* ========================================
+       GALLERY
+    ======================================== */
+    .gallery-section {
+      background: #f6f5f0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+      padding: 9px;
+      border: 1px solid #e6e2d9;
+      border-radius: 14px;
+      background: white;
+    }
+
+    .gallery-photo {
+      position: relative;
+      display: grid;
+      height: 205px;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 9px;
+      background: linear-gradient(145deg, #e5e0d5, #dce6e8);
+      color: #6d7b89;
+      text-align: center;
+      font-size: .78rem;
+    }
+
+    .gallery-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-caption {
+      padding: 14px 8px 10px;
+    }
+
+    .gallery-caption h3 {
+      color: var(--navy);
+      font: 500 1.03rem var(--serif);
+    }
+
+    .gallery-caption p {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .73rem;
+    }
+
+    /* ========================================
+       REFLECTION
+    ======================================== */
+    .reflection-section {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      color: white;
+    }
+
+    .reflection-section::after {
+      position: absolute;
+      right: -50px;
+      bottom: -155px;
+      color: rgba(255,255,255,.025);
+      content: "✦";
+      font-size: 360px;
+      pointer-events: none;
+    }
+
+    .reflection-section .section-title {
+      color: white;
+    }
+
+    .reflection-section .section-description {
+      color: #b7c4d1;
+    }
+
+    .reflection-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: start;
+      gap: 50px;
+    }
+
+    .reflection-quote {
+      margin-top: 26px;
+      padding: 15px 0 15px 20px;
+      border-left: 3px solid var(--gold);
+      color: #d6dfe7;
+      font: italic 1.03rem/1.9 var(--serif);
+    }
+
+    .reflection-list {
+      display: grid;
+      gap: 13px;
+    }
+
+    .reflection-item {
+      display: flex;
+      gap: 14px;
+      padding: 19px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 13px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .reflection-icon {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      place-items: center;
+      border-radius: 11px;
+      background: rgba(201,163,107,.14);
+      color: #e8c78f;
+    }
+
+    .reflection-item h3 {
+      font-size: .88rem;
+    }
+
+    .reflection-item p {
+      margin-top: 5px;
+      color: #b3c0ce;
+      font-size: .77rem;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .closing-section {
+      background: #fffdf8;
+    }
+
+    .closing-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+    }
+
+    .closing-card h3 {
+      margin-top: 10px;
+      color: var(--navy);
+      font: 500 1.45rem/1.4 var(--serif);
+    }
+
+    .closing-card p {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .footer {
+      padding: 25px 0;
+      background: #091a2a;
+      color: white;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer p {
+      color: #aab7c5;
+      font-size: .73rem;
+    }
+
+    .footer strong {
+      color: #e5c38d;
+    }
+
+    .back-top {
+      display: grid;
+      width: 39px;
+      height: 39px;
+      flex-shrink: 0;
+      place-items: center;
+      border: 1px solid #43566a;
+      border-radius: 10px;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    /* ========================================
+       REVEAL ANIMATIONS
+    ======================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(17px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       TABLET
+    ======================================== */
+    @media (max-width: 1250px) {
+      :root {
+        --sidebar: 248px;
+      }
+
+      .sidebar {
+        padding-inline: 17px;
+      }
+
+      .container {
+        padding-inline: 30px;
+      }
+
+      .hero-grid {
+        padding-inline: 30px;
+        gap: 15px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 5vw, 4.4rem);
+      }
+
+      .document-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-grid {
+        gap: 35px;
+      }
+    }
+
+    /* ========================================
+       MOBILE
+    ======================================== */
+    @media (max-width: 820px) {
+      :root {
+        --sidebar: 278px;
+      }
+
+      .sidebar {
+        transform: translateX(-105%);
+        transition: transform .3s ease;
+        box-shadow: none;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 15px 0 45px rgba(0,0,0,.23);
+      }
+
+      .overlay.open {
+        position: fixed;
+        inset: 0;
+        z-index: 900;
+        display: block;
+        background: rgba(5,17,30,.58);
+        backdrop-filter: blur(3px);
+      }
+
+      .mobile-header {
+        position: sticky;
+        top: 0;
+        z-index: 800;
+        display: flex;
+        min-height: 65px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 5%;
+        background: rgba(16,38,62,.98);
+        color: white;
+      }
+
+      .mobile-brand {
+        font-size: .78rem;
+        font-weight: 900;
+        letter-spacing: 1.1px;
+      }
+
+      .mobile-brand small {
+        display: block;
+        margin-top: 2px;
+        color: #adbdcd;
+        font-size: .6rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+      }
+
+      .menu-button {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 1px solid rgba(255,255,255,.2);
+        border-radius: 11px;
+        background: rgba(255,255,255,.06);
+        color: white;
+        cursor: pointer;
+        font-size: 1.15rem;
+      }
+
+      .page {
+        margin-left: 0;
+      }
+
+      .reading-progress {
+        left: 0;
+      }
+
+      .hero {
+        min-height: unset;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 42px 5% 54px;
+      }
+
+      .hero-visual {
+        min-height: 310px;
+      }
+
+      .hero-photo-frame {
+        width: 225px;
+        height: 285px;
+      }
+
+      .hero-orbit {
+        width: 300px;
+      }
+
+      .hero-stamp {
+        top: 12px;
+        right: 5%;
+      }
+
+      .hero-note {
+        right: 3%;
+        bottom: 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.5rem, 11vw, 5rem);
+      }
+
+      .hero::before {
+        right: 0;
+      }
+
+      .identity-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .identity-item,
+      .identity-item:first-child {
+        padding: 17px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .identity-item:last-child {
+        border-bottom: 0;
+      }
+
+      .section {
+        padding-block: 65px;
+      }
+
+      .container {
+        padding-inline: 5%;
+      }
+
+      .about-grid,
+      .reflection-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .about-visual {
+        max-width: 450px;
+      }
+
+      .about-panel {
+        min-height: 270px;
+      }
+
+      .portfolio-heading-row {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .closing-card {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero h1 {
+        font-size: 3.45rem;
+        letter-spacing: -2px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .document-grid,
+      .process-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .document-card {
+        padding: 23px;
+      }
+
+      .gallery-photo {
+        height: 230px;
+      }
+
+      .fact {
+        grid-template-columns: 110px minmax(0, 1fr);
+        gap: 10px;
+        font-size: .75rem;
+      }
+
+      .closing-card {
+        padding: 23px;
+      }
+
+      .footer-inner {
+        align-items: start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="reading-progress" id="readingProgress"></div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+
+    <a href="#beranda" class="brand">
+      <div class="brand-mark">AM</div>
+      <div>
+        <div class="brand-name">ACADEMIC PORTFOLIO</div>
+        <div class="brand-sub">PENDIDIKAN PANCASILA</div>
+      </div>
+    </a>
+
+    <div class="profile-card">
+      <div class="avatar-ring">
+        <img
+          class="avatar"
+          id="sidebarAvatar"
+          src="media/profil.jpeg"
+          alt="Foto April Mulyanas Arif"
+        >
+        <div class="avatar-fallback" id="sidebarAvatarFallback">AM</div>
+      </div>
+
+      <h2 class="profile-name">April Mulyanas Arif</h2>
+      <p class="profile-role">Mahasiswa PPG Calon Guru</p>
+
+      <div class="profile-chip">
+        <span></span>
+        Pendidikan Pancasila
+      </div>
+    </div>
+
+    <div class="nav-heading">NAVIGASI UTAMA</div>
+
+    <nav class="nav-list" aria-label="Navigasi utama">
+      <a href="#beranda" class="nav-link active">
+        <span class="nav-icon">⌂</span>
+        Beranda
+      </a>
+      <a href="#profil" class="nav-link">
+        <span class="nav-icon">♙</span>
+        Profil Akademik
+      </a>
+      <a href="#portofolio" class="nav-link">
+        <span class="nav-icon">▤</span>
+        E-Portfolio 1
+        <span class="nav-number">06</span>
+      </a>
+    </nav>
+
+    <div class="nav-heading">ARSIP PEMBELAJARAN</div>
+
+    <nav class="nav-list" aria-label="Arsip pembelajaran">
+      <a href="#rancangan" class="nav-link">
+        <span class="nav-icon">▧</span>
+        Rancangan Pembelajaran
+        <span class="nav-number">01</span>
+      </a>
+      <a href="#materi" class="nav-link">
+        <span class="nav-icon">▤</span>
+        Materi Pembelajaran
+        <span class="nav-number">02</span>
+      </a>
+      <a href="#media" class="nav-link">
+        <span class="nav-icon">▣</span>
+        Media Pembelajaran
+        <span class="nav-number">03</span>
+      </a>
+      <a href="#video" class="nav-link">
+        <span class="nav-icon">▷</span>
+        Video Praktik Mengajar
+        <span class="nav-number">04</span>
+      </a>
+      <a href="#nonmengajar" class="nav-link">
+        <span class="nav-icon">♧</span>
+        Kegiatan Nonmengajar
+        <span class="nav-number">05</span>
+      </a>
+      <a href="#penilaian" class="nav-link">
+        <span class="nav-icon">☷</span>
+        Instrumen Penilaian
+        <span class="nav-number">06</span>
+      </a>
+    </nav>
+
+    <div class="nav-heading">CATATAN PERJALANAN</div>
+
+    <nav class="nav-list" aria-label="Dokumentasi dan refleksi">
+      <a href="#galeri" class="nav-link">
+        <span class="nav-icon">▧</span>
+        Galeri Dokumentasi
+      </a>
+      <a href="#refleksi" class="nav-link">
+        <span class="nav-icon">✧</span>
+        Refleksi Profesional
+      </a>
+      <a href="#penutup" class="nav-link">
+        <span class="nav-icon">↗</span>
+        Penutup
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <p class="sidebar-quote">
+        “Pendidikan adalah proses menumbuhkan karakter, membangun nalar,
+        dan memanusiakan manusia.”
+        <small>Filosofi Pendidikan</small>
+      </p>
+    </div>
+  </aside>
+
+  <!-- MOBILE HEADER -->
+  <header class="mobile-header">
+    <div class="mobile-brand">
+      E-PORTFOLIO 01
+      <small>APRIL MULYANAS ARIF</small>
+    </div>
+    <button
+      type="button"
+      class="menu-button"
+      id="menuButton"
+      aria-label="Buka navigasi"
+      aria-expanded="false"
+    >☰</button>
+  </header>
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section class="hero" id="beranda">
+      <div class="hero-grid">
+
+        <div class="hero-copy reveal">
+          <div class="hero-index">Dokumentasi Akademik · 2026</div>
+
+          <h1>
+            E-Portfolio<br>
+            <em>01.</em>
+          </h1>
+
+          <p class="hero-title-small">
+            Praktik Mengajar Mandiri
+          </p>
+
+          <div class="hero-rule"></div>
+
+          <p class="hero-description">
+            Sebuah dokumentasi perjalanan profesional dalam merancang,
+            melaksanakan, menganalisis, dan merefleksikan pembelajaran
+            Pendidikan Pancasila demi menghadirkan pengalaman belajar
+            yang bermakna bagi peserta didik.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#portofolio" class="button button-primary">
+              Jelajahi Portofolio <span>↗</span>
+            </a>
+            <a href="#profil" class="button button-outline">
+              Profil Akademik
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-orbit"></div>
+
+          <div class="hero-photo-frame">
+            <img
+              class="hero-photo"
+              id="heroAvatar"
+              src="media/profil.jpeg"
+              alt="Potret April Mulyanas Arif"
+            >
+            <div class="hero-photo-fallback" id="heroAvatarFallback">
+              April Mulyanas Arif
+            </div>
+          </div>
+
+          <div class="hero-stamp">
+            <strong>01</strong>
+            <span>PORTFOLIO</span>
+          </div>
+
+          <div class="hero-note">
+            <strong>Belajar & Bertumbuh</strong>
+            <span>Perjalanan menjadi pendidik profesional</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- IDENTITAS -->
+    <section class="identity-strip" aria-label="Identitas akademik">
+      <div class="container">
+        <div class="identity-grid">
+
+          <div class="identity-item">
+            <div class="identity-icon">♙</div>
+            <div>
+              <small>Nama Mahasiswa</small>
+              <strong>April Mulyanas Arif</strong>
+            </div>
+          </div>
+
+          <div class="identity-item">
+            <div class="identity-icon">▤</div>
+            <div>
+              <small>Nomor Induk Mahasiswa</small>
+              <strong>20250120909003</strong>
+            </div>
+          </div>
+
+          <div class="identity-item">
+            <div class="identity-icon">✧</div>
+            <div>
+              <small>Program Studi</small>
+              <strong>Pendidikan Pancasila</strong>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFIL AKADEMIK -->
+    <section class="section about-section" id="profil">
+      <div class="container about-grid">
+
+        <div class="about-visual reveal">
+          <div class="about-panel">
+            <div class="large-initial">AM.</div>
+            <h3>Menjadi pendidik yang reflektif dan inspiratif.</h3>
+            <p>
+              Mengembangkan kompetensi pedagogik dan profesional melalui
+              pengalaman nyata, refleksi, serta perbaikan pembelajaran
+              secara berkelanjutan.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-content reveal">
+          <div class="section-kicker">Profil Akademik</div>
+          <h2 class="section-title">
+            Mengenal perjalanan akademik saya.
+          </h2>
+
+          <p>
+            Saya, April Mulyanas Arif, merupakan mahasiswa Program Studi
+            Pendidikan Pancasila yang mendokumentasikan proses
+            pengembangan kompetensi melalui praktik mengajar mandiri.
+            Portofolio ini disusun sebagai ruang untuk menunjukkan
+            proses berpikir, hasil kerja, evaluasi, dan pembelajaran
+            profesional yang diperoleh selama proses pendidikan guru.
+          </p>
+
+          <p>
+            Bagi saya, pembelajaran Pendidikan Pancasila bukan hanya
+            tentang memahami konsep dan peraturan, tetapi juga
+            mengembangkan karakter, tanggung jawab, sikap demokratis,
+            serta kesadaran sebagai warga negara.
+          </p>
+
+          <div class="about-facts">
+            <div class="fact">
+              <span>Nama lengkap</span>
+              <strong>April Mulyanas Arif</strong>
+            </div>
+            <div class="fact">
+              <span>NIM</span>
+              <strong>20250120909003</strong>
+            </div>
+            <div class="fact">
+              <span>Program studi</span>
+              <strong>Pendidikan Pancasila</strong>
+            </div>
+            <div class="fact">
+              <span>Bidang pembelajaran</span>
+              <strong>Pendidikan Pancasila</strong>
+            </div>
+            <div class="fact">
+              <span>Fokus portofolio</span>
+              <strong>Praktik Mengajar Mandiri</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ENAM KOMPONEN -->
+    <section class="section portfolio-section" id="portofolio">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="portfolio-heading-row">
+            <div>
+              <div class="section-kicker">Arsip Akademik</div>
+              <h2 class="section-title">E-Portfolio 01</h2>
+              <p class="section-description">
+                Enam komponen analisis yang mendokumentasikan kualitas
+                perencanaan, proses pelaksanaan, dan evaluasi praktik
+                mengajar mandiri.
+              </p>
+            </div>
+
+            <div class="total-badge">
+              Total <strong>06 komponen</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="document-grid">
+
+          <!-- DOKUMEN 01 -->
+          <article class="document-card reveal" id="rancangan">
+            <div class="doc-top">
+              <div class="doc-icon">▧</div>
+              <span class="doc-number">01</span>
+            </div>
+            <div class="doc-category">Perencanaan Pembelajaran</div>
+            <h3>Analisis Produk Rancangan Pembelajaran</h3>
+            <p>
+              Analisis produk rancangan atau perencanaan pembelajaran
+              yang disusun sebagai pedoman praktik mengajar mandiri.
+            </p>
+            <ul class="doc-checklist">
+              <li>Analisis tujuan pembelajaran</li>
+              <li>Kesesuaian strategi dan langkah pembelajaran</li>
+              <li>Evaluasi rancangan dan tindak lanjut</li>
+            </ul>
+            <a class="doc-link"
+               href="dokumen/analisis-produk-rancangan.pdf"
+               target="_blank" rel="noopener">
+              <span>Buka Dokumen Analisis</span>
+              <span class="arrow">↗</span>
+            </a>
+          </article>
+
+          <!-- DOKUMEN 02 -->
+          <article class="document-card reveal" id="materi">
+            <div class="doc-top">
+              <div class="doc-icon">▤</div>
+              <span class="doc-number">02</span>
+            </div>
+            <div class="doc-category">Materi Pembelajaran</div>
+            <h3>Analisis Materi Pembelajaran</h3>
+            <p>
+              Telaah materi yang telah disusun dan diterapkan untuk
+              memastikan ketepatan konsep dan relevansinya bagi siswa.
+            </p>
+            <ul class="doc-checklist">
+              <li>Ketepatan dan kedalaman materi</li>
+              <li>Kesesuaian materi dengan tujuan belajar</li>
+              <li>Kontekstualisasi materi bagi peserta didik</li>
+            </ul>
+            <a class="doc-link"
+               href="dokumen/analisis-materi-pembelajaran.pdf"
+               target="_blank" rel="noopener">
+              <span>Buka Dokumen Analisis</span>
+              <span class="arrow">↗</span>
+            </a>
+          </article>
+
+          <!-- DOKUMEN 03 -->
+          <article class="document-card reveal" id="media">
+            <div class="doc-top">
+              <div class="doc-icon">▣</div>
+              <span class="doc-number">03</span>
+            </div>
+            <div class="doc-category">Media Pembelajaran</div>
+            <h3>Analisis Media Pembelajaran</h3>
+            <p>
+              Evaluasi penggunaan media pembelajaran dalam mendukung
+              pemahaman konsep dan partisipasi peserta didik.
+            </p>
+            <ul class="doc-checklist">
+              <li>Kesesuaian media dengan materi</li>
+              <li>Daya tarik dan kemudahan penggunaan</li>
+              <li>Kontribusi media terhadap pembelajaran</li>
+            </ul>
+            <a class="doc-link"
+               href="dokumen/analisis-media-pembelajaran.pdf"
+               target="_blank" rel="noopener">
+              <span>Buka Dokumen Analisis</span>
+              <span class="arrow">↗</span>
+            </a>
+          </article>
+
+          <!-- DOKUMEN 04 -->
+          <article class="document-card reveal" id="video">
+            <div class="doc-top">
+              <div class="doc-icon">▷</div>
+              <span class="doc-number">04</span>
+            </div>
+            <div class="doc-category">Pelaksanaan Mengajar</div>
+            <h3>Analisis Video Praktik Mengajar Mandiri</h3>
+            <p>
+              Refleksi berbasis dokumentasi video untuk mengidentifikasi
+              kualitas pelaksanaan dan aspek yang perlu diperbaiki.
+            </p>
+            <ul class="doc-checklist">
+              <li>Keterampilan membuka dan menutup pelajaran</li>
+              <li>Interaksi dan pengelolaan kelas</li>
+              <li>Refleksi praktik dan perbaikan mengajar</li>
+            </ul>
+            <a class="doc-link"
+               href="dokumen/analisis-vidio-pembelajaran.pdf"
+               target="_blank" rel="noopener">
+              <span>Buka Dokumen Analisis</span>
+              <span class="arrow">↗</span>
+            </a>
+          </article>
+
+          <!-- DOKUMEN 05 -->
+          <article class="document-card reveal" id="nonmengajar">
+            <div class="doc-top">
+              <div class="doc-icon">♧</div>
+              <span class="doc-number">05</span>
+            </div>
+            <div class="doc-category">Pengembangan Profesional</div>
+            <h3>Analisis Kegiatan Nonmengajar</h3>
+            <p>
+              Analisis kegiatan nonmengajar dan kontribusinya terhadap
+              lingkungan sekolah serta pengembangan kompetensi guru.
+            </p>
+            <ul class="doc-checklist">
+              <li>Deskripsi dan pelaksanaan kegiatan</li>
+              <li>Manfaat bagi sekolah dan warga sekolah</li>
+              <li>Refleksi pengalaman profesional</li>
+            </ul>
+            <a class="doc-link"
+               href="dokumen/analisis-kegiatan-nonmengajar.pdf"
+               target="_blank" rel="noopener">
+              <span>Buka Dokumen Analisis</span>
+              <span class="arrow">↗</span>
+            </a>
+          </article>
+
+          <!-- DOKUMEN 06 -->
+          <article class="document-card reveal" id="penilaian">
+            <div class="doc-top">
+              <div class="doc-icon">☷</div>
+              <span class="doc-number">06</span>
+            </div>
+            <div class="doc-category">Asesmen Pembelajaran</div>
+            <h3>Instrumen Penilaian Beserta Analisisnya</h3>
+            <p>
+              Dokumentasi instrumen asesmen dan analisisnya untuk
+              mengevaluasi ketercapaian tujuan pembelajaran.
+            </p>
+            <ul class="doc-checklist">
+              <li>Instrumen dan rubrik penilaian</li>
+              <li>Analisis hasil asesmen peserta didik</li>
+              <li>Rencana tindak lanjut pembelajaran</li>
+            </ul>
+            <a class="doc-link"
+               href="dokumen/analisis-instrumen-penelitian.pdf"
+               target="_blank" rel="noopener">
+              <span>Buka Dokumen Analisis</span>
+              <span class="arrow">↗</span>
+            </a>
+          </article>
+
+        </div>
+
+        <div class="document-note reveal">
+          <span>ⓘ</span>
+          <p>
+            <strong>Catatan pengelolaan dokumen:</strong>
+             Untuk melihat hasil analisis dari keenam komponen, klik tombol 
+            “Buka Dokumen Analisis” pada komponen yang ingin dilihat.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ALUR PROFESIONAL -->
+    <section class="section process-section" id="proses">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="section-kicker">Siklus Pengembangan</div>
+          <h2 class="section-title">Dari perencanaan menuju perbaikan.</h2>
+          <p class="section-description">
+            Praktik mengajar menjadi proses belajar profesional yang
+            terus berkembang melalui pelaksanaan, evaluasi, dan refleksi.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card reveal">
+            <span class="process-number">01</span>
+            <h3>Merencanakan</h3>
+            <p>
+              Menyusun tujuan, materi, strategi, media, dan instrumen
+              asesmen sesuai kebutuhan belajar.
+            </p>
+          </article>
+
+          <article class="process-card reveal">
+            <span class="process-number">02</span>
+            <h3>Melaksanakan</h3>
+            <p>
+              Menerapkan rancangan pembelajaran dan membangun interaksi
+              yang bermakna bersama peserta didik.
+            </p>
+          </article>
+
+          <article class="process-card reveal">
+            <span class="process-number">03</span>
+            <h3>Menganalisis</h3>
+            <p>
+              Menelaah proses pembelajaran, respons siswa, dan bukti
+              ketercapaian tujuan pembelajaran.
+            </p>
+          </article>
+
+          <article class="process-card reveal">
+            <span class="process-number">04</span>
+            <h3>Merefleksikan</h3>
+            <p>
+              Menetapkan kekuatan, tantangan, serta langkah perbaikan
+              untuk pembelajaran berikutnya.
+            </p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALERI -->
+     <!-- PRAKTEK MENGAJAR -->
+
+
+    <section class="section gallery-section" id="galeri">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div class="section-kicker">Dokumentasi Autentik</div>
+          <h2 class="section-title">Cerita di balik proses pembelajaran.</h2>
+          <p class="section-description">
+            Ruang dokumentasi untuk memperlihatkan proses praktik
+            mengajar, penggunaan media, dan kegiatan nonmengajar.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/siklus 1.jpeg"
+                alt="Dokumentasi praktik mengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto praktik mengajar';"
+              >
+            </div>
+            
+            <div class="gallery-caption">
+              <h3>Pembelajaran Mandiri Siklus 1</h3>
+              <p>Pelaksanaan pembelajaran disiklus ini menggunakan
+               metode diskusi kelompok, tanya jawab, analisis kasus, dan permainan 
+               edukatif Pancasila Detective.</p>
+            </div>
+          </article>
+
+           <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/siklus 2.jpeg"
+                alt="Dokumentasi praktik mengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto praktik mengajar';"
+              >
+            </div>
+            
+            <div class="gallery-caption">
+              <h3>Pembelajaran Mandiri Siklus 2</h3>
+              <p>Pelaksanaan pembelajaran di siklus ini menggunakan metode Role Play, Diskusi kelompok, tanya jawab..</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/siklus 3.jpeg"
+                alt="Dokumentasi praktik mengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto praktik mengajar';"
+              >
+            </div>
+            
+            <div class="gallery-caption">
+              <h3>Pembelajaran Mandiri Siklus 3</h3>
+              <p>Pelaksanaan pembelajaran disiklus ini menggunakanan metode diskusi kelompok, tanya jawab, 
+                penugasan proyek, studi literatur, 
+                dan presentasi hasil proyek.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/siklus 4.jpeg"
+                alt="Dokumentasi praktik mengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto praktik mengajar';"
+              >
+            </div>
+            
+            <div class="gallery-caption">
+              <h3>Pembelajaran Mandiri Siklus 4</h3>
+              <p>Pelaksanaan pembelajaran di siklus ini menggunakan metode tanya jawab, diskusi kelompok, analisis masalah, game edukaatif dan presentasi .</p>
+            </div>
+          </article>
+
+           <!-- IOVASI PEMBELAJARAN-->
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/wayground.png"
+                alt="Dokumentasi media pembelajaran"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto media pembelajaran';"
+              >
+            </div>
+              
+            <div class="gallery-caption">
+              <h3>Inovasi Pembelajaran Wayground</h3>
+              <p>Hasil Asesmen diagnostik dan Sumatif menggunakan media wayground.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/wordwall.png"
+                alt="Dokumentasi media pembelajaran"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto media pembelajaran';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Inovasi Pembelajaran Wordwall</h3>
+              <p>Permainan edukatif mencocokan pertanyaan dengan pernyataan yang sesuai.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/canva.png"
+                alt="Dokumentasi media pembelajaran"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto media pembelajaran';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Inovasi Pembelajaran Canva</h3>
+              <p>Menghasilkan LKPD yang menarik berbentuk permainan TTS Pancasila.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/duckrace.png"
+                alt="Dokumentasi media pembelajaran"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto media pembelajaran';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Inovasi Pembelajaran Duckrace</h3>
+              <p>Game yang meningkatkan antusiasme siswa dalam menjawab pertanyaan dari guru.</p>
+            </div>
+          </article>
+      
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm1.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Mengikuti Upacara Bendera.</p>
+            </div>
+          </article>
+
+                    <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm2.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Mengikuti kegiatan Imtaq.</p>
+            </div>
+          </article>
+
+                    <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm3.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Penerapan budaya 5S (Senyum, Salam, Sapa, Sopan, dan Santun).</p>
+            </div>
+          </article>
+
+                    <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm4.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Mengikuti kegiatan senam bersama guru dan siswa.</p>
+            </div>
+          </article>
+
+                    <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm5.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Menjaga loby sekolah.</p>
+            </div>
+          </article>
+
+                    <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm6.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Membantu operator sekolah</p>
+            </div>
+          </article>
+          
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm7.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Membantu pegawai MBG.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm8.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Memeriahkan perayanaan HUT-RI.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm9.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Mengikuti kegiatan eksrakurikuler sore.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm10.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Membantu melaksanakan kokurikuler.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm11.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Mendata nama siswa saat mid semester.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm12.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Mengikuti kegiatan sosialisasi.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <div class="gallery-photo">
+              <img
+                src="media/nm13.jpeg"
+                alt="Dokumentasi kegiatan nonmengajar"
+                loading="lazy"
+                onerror="this.hidden=true; this.parentElement.textContent='Tambahkan foto kegiatan nonmengajar';"
+              >
+            </div>
+            <div class="gallery-caption">
+              <h3>Kegiatan Nonmengajar</h3>
+              <p>Melakukan pemilihan OSIS.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- REFLEKSI -->
+    <section class="section reflection-section" id="refleksi">
+      <div class="container reflection-grid">
+
+        <div class="reveal">
+          <div class="section-kicker">Refleksi Profesional</div>
+          <h2 class="section-title">
+            Guru yang baik juga terus belajar.
+          </h2>
+          <p class="section-description">
+            Portofolio ini tidak hanya menyimpan hasil kerja, tetapi juga
+            menjadi ruang untuk memahami pengalaman, mengevaluasi
+            keputusan pembelajaran, dan merencanakan pengembangan diri.
+          </p>
+
+          <div class="reflection-quote">
+            “Setiap pengalaman mengajar adalah kesempatan untuk
+            memahami peserta didik dengan lebih baik dan menjadi
+            pendidik yang lebih bijaksana.”
+          </div>
+        </div>
+
+        <div class="reflection-list">
+
+          <article class="reflection-item reveal">
+            <div class="reflection-icon">◎</div>
+            <div>
+              <h3>Kesadaran dan Evaluasi Diri</h3>
+              <p>
+                Mengidentifikasi kekuatan dan aspek yang perlu
+                dikembangkan berdasarkan pengalaman praktik nyata.
+              </p>
+            </div>
+          </article>
+
+          <article class="reflection-item reveal">
+            <div class="reflection-icon">↗</div>
+            <div>
+              <h3>Perbaikan Berkelanjutan</h3>
+              <p>
+                Menggunakan hasil analisis dan umpan balik untuk
+                memperbaiki rancangan serta pelaksanaan pembelajaran.
+              </p>
+            </div>
+          </article>
+
+          <article class="reflection-item reveal">
+            <div class="reflection-icon">✦</div>
+            <div>
+              <h3>Komitmen terhadap Pendidikan</h3>
+              <p>
+                Mengembangkan pembelajaran Pendidikan Pancasila yang
+                bermakna, inklusif, dan berorientasi pada karakter.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PENUTUP -->
+    <section class="section closing-section" id="penutup">
+      <div class="container">
+        <div class="closing-card reveal">
+          <div>
+            <div class="section-kicker">Akhir Dokumentasi</div>
+            <h3>Terima kasih telah menjadi bagian dari perjalanan ini.</h3>
+            <p>
+              E-Portfolio 01 · April Mulyanas Arif · Pendidikan Pancasila
+            </p>
+          </div>
+
+          <a href="#beranda" class="button button-primary">
+            Kembali ke Atas ↑
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>
+          <p>E-Portfolio 01 · Praktik Mengajar Mandiri</p>
+          <p style="margin-top:5px">
+            Disusun oleh <strong>April Mulyanas Arif</strong>
+          </p>
+        </div>
+        <a href="#beranda" class="back-top" aria-label="Kembali ke atas">↑</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    /* =====================================
+       MOBILE SIDEBAR
+    ===================================== */
+    const sidebar = document.getElementById("sidebar");
+    const menuButton = document.getElementById("menuButton");
+    const overlay = document.getElementById("overlay");
+
+    function setMenu(open) {
+      sidebar.classList.toggle("open", open);
+      overlay.classList.toggle("open", open);
+      document.body.classList.toggle("menu-open", open);
+
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute(
+        "aria-label",
+        open ? "Tutup navigasi" : "Buka navigasi"
+      );
+
+      menuButton.textContent = open ? "✕" : "☰";
+    }
+
+    menuButton.addEventListener("click", () => {
+      setMenu(!sidebar.classList.contains("open"));
+    });
+
+    overlay.addEventListener("click", () => setMenu(false));
+
+    sidebar.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => setMenu(false));
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") setMenu(false);
+    });
+
+    /* =====================================
+       ACTIVE NAVIGATION
+    ===================================== */
+    const navLinks = [...document.querySelectorAll(".nav-link")];
+
+    const trackedSections = [
+      ...new Set(
+        navLinks
+          .map(link => document.querySelector(link.getAttribute("href")))
+          .filter(Boolean)
+      )
+    ];
+
+    if ("IntersectionObserver" in window) {
+      const navigationObserver = new IntersectionObserver(entries => {
+        const visibleEntries = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (!visibleEntries.length) return;
+
+        const currentId = visibleEntries[0].target.id;
+
+        navLinks.forEach(link => {
+          const active = link.getAttribute("href") === "#" + currentId;
+
+          link.classList.toggle("active", active);
+
+          if (active) {
+            link.setAttribute("aria-current", "location");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      }, {
+        rootMargin: "-15% 0px -68% 0px",
+        threshold: [0, .1, .25, .5]
+      });
+
+      trackedSections.forEach(section => {
+        navigationObserver.observe(section);
+      });
+    }
+
+    /* =====================================
+       SCROLL REVEAL
+    ===================================== */
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: .08
+      });
+
+      revealElements.forEach(element => {
+        revealObserver.observe(element);
+      });
+    } else {
+      revealElements.forEach(element => {
+        element.classList.add("visible");
+      });
+    }
+
+    /* =====================================
+       READING PROGRESS
+    ===================================== */
+    const progress = document.getElementById("readingProgress");
+
+    function updateReadingProgress() {
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      const percentage = scrollableHeight > 0
+        ? (window.scrollY / scrollableHeight) * 100
+        : 0;
+
+      progress.style.width = `${percentage}%`;
+    }
+
+    window.addEventListener("scroll", updateReadingProgress, {
+      passive: true
+    });
+
+    window.addEventListener("resize", updateReadingProgress);
+    updateReadingProgress();
+
+    /* =====================================
+       IMAGE FALLBACK
+    ===================================== */
+    function setupImage(imageId, fallbackId) {
+      const image = document.getElementById(imageId);
+      const fallback = document.getElementById(fallbackId);
+
+      function showFallback() {
+        image.style.display = "none";
+        fallback.style.display = "flex";
+      }
+
+      image.addEventListener("error", showFallback);
+
+      if (image.complete && image.naturalWidth === 0) {
+        showFallback();
+      }
+    }
+
+    setupImage("sidebarAvatar", "sidebarAvatarFallback");
+    setupImage("heroAvatar", "heroAvatarFallback");
+  </script>
+
+</body>
+</html>
